@@ -6,11 +6,8 @@
   <title>Pesca Direta – Conectando Pescadores e Restaurantes de Forma Justa e Sustentável</title>
   <!-- Fonte Space Mono -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
-  <!-- Ícones (Font Awesome) -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-8l1tQOFe8NN7EaI7z+qFqB4K2q4/GHst23wDNPC0shAHk9pCeZ/yB8K+Xl2kG9zPzZjE6zv4Qp1A8Cft/7ifVQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Ícones (Font Awesome via jsDelivr) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <style>
     /* Reset e Configurações Iniciais */
     * {
@@ -32,7 +29,6 @@
       max-width: 100%;
       height: auto;
     }
-
     /* Container */
     .container {
       width: 90%;
@@ -40,7 +36,6 @@
       margin: 0 auto;
       padding: 0 15px;
     }
-
     /* Header */
     header {
       background: #fff;
@@ -84,10 +79,8 @@
     nav ul li a:hover {
       color: #13b0ae;
     }
-
     /* Hero (Início) */
     .hero {
-      /* Imagem de fundo para a seção inicial (Hero) */
       background: url('./public/img/hero-bg.jpg') center center/cover no-repeat;
       position: relative;
       height: 100vh;
@@ -132,7 +125,6 @@
     .hero .btn:hover {
       background: #0a2e3f;
     }
-
     /* Seções Gerais */
     section {
       padding: 80px 0;
@@ -143,17 +135,11 @@
       color: #13b0ae;
       margin-bottom: 40px;
     }
-
-    /*
-      Textura de fundo para as demais seções
-      (exceto .hero), usando a imagem fornecida:
-      ./public/img/texture-bg.png (exemplo)
-    */
+    /* Textura de fundo para as demais seções */
     #servicos, #conheca, #contato {
       background: url('./public/img/texture-bg.png') center center/cover no-repeat;
       position: relative;
     }
-
     /* Seção de Serviços */
     .features {
       display: flex;
@@ -162,7 +148,7 @@
       gap: 30px;
     }
     .feature {
-      background: rgba(255,255,255,0.8); /* Fundo levemente translúcido para destacar o texto */
+      background: rgba(255,255,255,0.8);
       padding: 30px 20px;
       border-radius: 5px;
       flex: 1 1 280px;
@@ -184,14 +170,13 @@
       font-size: 1rem;
       color: #0a2e3f;
     }
-
     /* Seção Conheça a Pesca Direta */
     #conheca .container {
       position: relative;
       z-index: 2;
     }
     #conheca .text-block {
-      background: rgba(255,255,255,0.8); /* Fundo levemente translúcido */
+      background: rgba(255,255,255,0.8);
       margin-bottom: 40px;
       padding: 20px;
       border-radius: 5px;
@@ -215,54 +200,48 @@
       margin-bottom: 15px;
       color: #0a2e3f;
     }
-
-    /* Seção Contato */
+    /* Seção Contato (Apenas Informações) */
     #contato .container {
       position: relative;
       z-index: 2;
+      text-align: center;
     }
-    #contato p {
-      color: #0a2e3f;
-    }
-    #contato form {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      background: rgba(255,255,255,0.8); /* Fundo levemente translúcido */
+    #contato .contact-info {
+      background: rgba(255,255,255,0.8);
+      display: inline-block;
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
-    #contato input, #contato textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      font-family: 'Space Mono', monospace;
-      color: #0a2e3f;
-    }
-    #contato button {
-      background: #13b0ae;
-      border: none;
-      padding: 15px;
-      color: #fff;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    #contato button:hover {
-      background: #0a2e3f;
-    }
-    #form-message {
-      text-align: center;
-      margin-top: 20px;
+    #contato .contact-info p {
       font-size: 1.1rem;
+      margin-bottom: 10px;
       color: #0a2e3f;
     }
-
+    #contato .contact-info p a {
+      color: #0a2e3f;
+      font-weight: bold;
+    }
+    /* Floating WhatsApp Icon */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      z-index: 9999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+    }
     /* Footer */
     footer {
       background: #0a2e3f;
@@ -271,7 +250,6 @@
       color: #fff;
       font-size: 0.9rem;
     }
-
     /* Responsividade */
     @media (max-width: 768px) {
       .inner-header {
@@ -388,20 +366,15 @@
     </div>
   </section>
 
-  <!-- Contato -->
+  <!-- Contato (Apenas Informações) -->
   <section id="contato">
     <div class="container">
       <h2>Contato</h2>
-      <p style="text-align: center; margin-bottom: 30px;">
-        Entre em contato conosco para saber mais sobre nossos serviços.
-      </p>
-      <form id="contactForm" action="sendmail.php" method="post">
-        <input type="text" name="nome" placeholder="Seu Nome" required>
-        <input type="email" name="email" placeholder="Seu Email" required>
-        <textarea name="mensagem" rows="5" placeholder="Sua Mensagem" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-      <div id="form-message"></div>
+      <div class="contact-info">
+        <p>Email: <strong>PescaDireta5@gmail.com</strong></p>
+        <p>Telefone: <a href="https://api.whatsapp.com/send?phone=5585982242729" target="_blank"><strong>+55 85 982242729</strong></a></p>
+        <p>Fale conosco e saiba mais sobre nossos serviços!</p>
+      </div>
     </div>
   </section>
 
@@ -412,23 +385,9 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // Impede o redirecionamento
-      const formData = new FormData(this);
-      fetch("sendmail.php", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("form-message").innerHTML = data;
-        this.reset();
-      })
-      .catch(error => {
-        document.getElementById("form-message").innerHTML = "Erro ao enviar a mensagem. Tente novamente.";
-      });
-    });
-  </script>
+  <!-- Floating WhatsApp Icon -->
+  <a href="https://api.whatsapp.com/send?phone=5585982242729" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 </body>
 </html>
