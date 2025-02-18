@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pesca Direta – Conectando Pescadores e Restaurantes de Forma Justa e Sustentável</title>
+  
+  <!-- Favicon (usando logo.png como ícone) -->
+  <link rel="icon" type="image/png" href="./public/img/logo.png" />
+
   <!-- Fonte Space Mono -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
   <!-- Ícones (Font Awesome via jsDelivr) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
   <style>
     /* Reset e Configurações Iniciais */
     * {
@@ -46,7 +52,7 @@
       top: 0;
       z-index: 100;
     }
-    header .inner-header {
+    .inner-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -61,6 +67,13 @@
     .brand h2 {
       margin-left: 10px;
       font-size: 1.8rem;
+      color: #0a2e3f;
+    }
+    /* Botão de menu (hambúrguer) para mobile */
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
       color: #0a2e3f;
     }
     nav ul {
@@ -242,7 +255,6 @@
     .whatsapp-float:hover {
       background-color: #128C7E;
     }
-    /* Footer */
     footer {
       background: #0a2e3f;
       padding: 20px 0;
@@ -252,15 +264,20 @@
     }
     /* Responsividade */
     @media (max-width: 768px) {
-      .inner-header {
-        flex-direction: column;
-      }
+      /* Oculta o menu e exibe o botão hamburguer */
       nav ul {
+        display: none;
         flex-direction: column;
         margin-top: 15px;
       }
-      nav ul li {
-        margin: 10px 0;
+      nav ul.active {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .inner-header {
+        flex-direction: row; /* Mantém brand e botão hamburguer na mesma linha */
       }
       .hero h1 {
         font-size: 2.2rem;
@@ -278,6 +295,10 @@
       <div class="brand">
         <img src="./public/img/logo.png" alt="Pesca Direta">
         <h2>Pesca Direta</h2>
+      </div>
+      <!-- Botão de menu para mobile -->
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
       </div>
       <nav>
         <ul>
@@ -389,5 +410,16 @@
   <a href="https://api.whatsapp.com/send?phone=5585982242729" target="_blank" class="whatsapp-float">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <script>
+    // Seleciona o botão e o menu
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navUl = document.querySelector('nav ul');
+
+    // Adiciona um evento de clique para abrir/fechar o menu no mobile
+    mobileMenuBtn.addEventListener('click', () => {
+      navUl.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
