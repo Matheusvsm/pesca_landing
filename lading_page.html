@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesca Direta – Conectando Pescadores e Restaurantes de Forma Justa e Sustentável</title>
+  <!-- Fonte Space Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+  <!-- Ícones (Font Awesome) -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-8l1tQOFe8NN7EaI7z+qFqB4K2q4/GHst23wDNPC0shAHk9pCeZ/yB8K+Xl2kG9zPzZjE6zv4Qp1A8Cft/7ifVQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Reset e Configurações Iniciais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Space Mono', monospace;
+      line-height: 1.6;
+      color: #0a2e3f;
+      background-color: #fff;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      padding: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
+    header .inner-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+    .brand img {
+      height: 50px;
+    }
+    .brand h2 {
+      margin-left: 10px;
+      font-size: 1.8rem;
+      color: #0a2e3f;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav ul li {
+      margin-left: 25px;
+    }
+    nav ul li a {
+      font-weight: bold;
+      color: #0a2e3f;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #13b0ae;
+    }
+
+    /* Hero (Início) */
+    .hero {
+      /* Imagem de fundo para a seção inicial (Hero) */
+      background: url('./public/img/hero-bg.jpg') center center/cover no-repeat;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 15px;
+      margin-top: 90px; /* espaço para o header fixo */
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10,46,63,0.5);
+      z-index: 1;
+    }
+    .hero .content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      max-width: 800px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .hero .btn {
+      background: #13b0ae;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .hero .btn:hover {
+      background: #0a2e3f;
+    }
+
+    /* Seções Gerais */
+    section {
+      padding: 80px 0;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #13b0ae;
+      margin-bottom: 40px;
+    }
+
+    /*
+      Textura de fundo para as demais seções
+      (exceto .hero), usando a imagem fornecida:
+      ./public/img/texture-bg.png (exemplo)
+    */
+    #servicos, #conheca, #contato {
+      background: url('./public/img/texture-bg.png') center center/cover no-repeat;
+      position: relative;
+    }
+
+    /* Seção de Serviços */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+    }
+    .feature {
+      background: rgba(255,255,255,0.8); /* Fundo levemente translúcido para destacar o texto */
+      padding: 30px 20px;
+      border-radius: 5px;
+      flex: 1 1 280px;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .feature .icon {
+      font-size: 2.2rem;
+      color: #13b0ae;
+      margin-bottom: 15px;
+    }
+    .feature h3 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      color: #13b0ae;
+    }
+    .feature p {
+      font-size: 1rem;
+      color: #0a2e3f;
+    }
+
+    /* Seção Conheça a Pesca Direta */
+    #conheca .container {
+      position: relative;
+      z-index: 2;
+    }
+    #conheca .text-block {
+      background: rgba(255,255,255,0.8); /* Fundo levemente translúcido */
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    #conheca .text-block h3 {
+      font-size: 1.6rem;
+      color: #13b0ae;
+      margin-bottom: 15px;
+    }
+    #conheca .text-block p {
+      font-size: 1rem;
+      text-align: justify;
+      margin-bottom: 15px;
+      color: #0a2e3f;
+    }
+    #conheca .text-block ul {
+      list-style: disc;
+      margin-left: 20px;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: #0a2e3f;
+    }
+
+    /* Seção Contato */
+    #contato .container {
+      position: relative;
+      z-index: 2;
+    }
+    #contato p {
+      color: #0a2e3f;
+    }
+    #contato form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: rgba(255,255,255,0.8); /* Fundo levemente translúcido */
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    #contato input, #contato textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: 'Space Mono', monospace;
+      color: #0a2e3f;
+    }
+    #contato button {
+      background: #13b0ae;
+      border: none;
+      padding: 15px;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #contato button:hover {
+      background: #0a2e3f;
+    }
+    #form-message {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #0a2e3f;
+    }
+
+    /* Footer */
+    footer {
+      background: #0a2e3f;
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .inner-header {
+        flex-direction: column;
+      }
+      nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container inner-header">
+      <div class="brand">
+        <img src="./public/img/logo.png" alt="Pesca Direta">
+        <h2>Pesca Direta</h2>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#conheca">Conheça</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero (Início) -->
+  <section class="hero" id="inicio">
+    <div class="container content">
+      <h1>Conectando Pescadores e Restaurantes</h1>
+      <p>Soluções inovadoras para promover sustentabilidade socioeconômica e ambiental.</p>
+      <a href="#contato" class="btn">Saiba Mais</a>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <div class="container">
+      <h2>Nossos Serviços</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="icon">
+            <i class="fas fa-fish"></i>
+          </div>
+          <h3>Conexão Direta</h3>
+          <p>Plataforma on-demand que conecta pescadores a estabelecimentos, eliminando intermediários.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Logística Integrada</h3>
+          <p>Soluções para abastecimento eficiente de produtos frescos, garantindo rapidez e qualidade.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Impacto Sustentável</h3>
+          <p>Melhoria na remuneração dos pescadores e fortalecimento das comunidades pesqueiras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conheça a Pesca Direta -->
+  <section id="conheca">
+    <div class="container">
+      <h2>Pesca Direta – Conectando Pescadores e Restaurantes de Forma Justa e Sustentável</h2>
+      <div class="text-block">
+        <h3>Sobre o Pesca Direta</h3>
+        <p>O Pesca Direta é uma solução inovadora que conecta pescadores diretamente a restaurantes e compradores, eliminando intermediários e garantindo negociações justas e transparentes. Nosso objetivo é transformar o mercado de frutos do mar, proporcionando preços acessíveis aos compradores e maior rentabilidade para os pescadores. Com o Pesca Direta, cada pedido significa mais dignidade para quem pesca e mais qualidade para quem consome.</p>
+      </div>
+      <div class="text-block">
+        <h3>Como Funciona?</h3>
+        <p>Nosso aplicativo possui um sistema intuitivo que facilita a negociação entre pescadores e compradores. Funcionalidades inovadoras otimizam o processo de compra e venda, proporcionando uma experiência segura, rápida e vantajosa para todos.</p>
+      </div>
+      <div class="text-block">
+        <h3>Modalidades de Negociação</h3>
+        <p><strong>Arremessar – A Compra Sob Demanda:</strong> O comprador lança um pedido diretamente na plataforma, definindo quantidade e valor desejado. Pescadores cadastrados podem responder com cotações competitivas, promovendo uma negociação ágil e transparente.</p>
+        <p><strong>Cooler – O Estoque dos Pescadores:</strong> Um estoque digital onde os pescadores listam seus produtos disponíveis com informações sobre data da captura, quantidade e preços, permitindo que os compradores acessem produtos frescos e rastreáveis.</p>
+      </div>
+      <div class="text-block">
+        <h3>Por Que Escolher o Pesca Direta?</h3>
+        <ul>
+          <li><strong>Preço Justo:</strong> Eliminação de intermediários para valores mais atrativos.</li>
+          <li><strong>Sustentabilidade:</strong> Apoio à pesca responsável e fortalecimento das comunidades pesqueiras.</li>
+          <li><strong>Segurança e Qualidade:</strong> Processo de negociação transparente com informações detalhadas.</li>
+          <li><strong>Impacto Social:</strong> Mais dignidade e estabilidade financeira para os pescadores e suas famílias.</li>
+        </ul>
+      </div>
+      <div class="text-block">
+        <h3>Nosso Compromisso com o Futuro</h3>
+        <p>Alinhados aos Objetivos de Desenvolvimento Sustentável da ONU, promovemos trabalho decente, crescimento econômico e preservação da vida marinha. Nossa plataforma vai além de um aplicativo de negociação – é um movimento que transforma o mercado pesqueiro, gerando retorno financeiro e impacto social positivo.</p>
+      </div>
+      <div class="text-block">
+        <h3>Investimento e Oportunidade</h3>
+        <p>O mercado de pescados frescos possui um enorme potencial ainda pouco explorado. Investir no Pesca Direta significa apoiar uma solução que alia tecnologia e sustentabilidade, proporcionando benefícios econômicos e sociais. Junte-se a nós nessa revolução rumo a um futuro mais justo e sustentável.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="container">
+      <h2>Contato</h2>
+      <p style="text-align: center; margin-bottom: 30px;">
+        Entre em contato conosco para saber mais sobre nossos serviços.
+      </p>
+      <form id="contactForm" action="sendmail.php" method="post">
+        <input type="text" name="nome" placeholder="Seu Nome" required>
+        <input type="email" name="email" placeholder="Seu Email" required>
+        <textarea name="mensagem" rows="5" placeholder="Sua Mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="form-message"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Pesca Direta. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Impede o redirecionamento
+      const formData = new FormData(this);
+      fetch("sendmail.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("form-message").innerHTML = data;
+        this.reset();
+      })
+      .catch(error => {
+        document.getElementById("form-message").innerHTML = "Erro ao enviar a mensagem. Tente novamente.";
+      });
+    });
+  </script>
+</body>
+</html>
